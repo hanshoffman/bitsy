@@ -18,17 +18,16 @@ int isPalindrome(int n) {
     return 1;
 }
 
-//http://stackoverflow.com/questions/1801391/what-is-the-best-algorithm-for-checking-if-a-number-is-prime
-//https://webcache.googleusercontent.com/search?q=cache:emzcKnQsr5UJ:https://en.wikipedia.org/wiki/Primality_test+&cd=3&hl=en&ct=clnk&gl=us
+//https://en.wikipedia.org/wiki/Primality_test
 int isPrime(int n) {
-    if (n == 2 || n == 3) return 1;
+    if (n <= 1) return 0;
+    if (n <= 3) return 1;
     if (n % 2 == 0 || n % 3 == 0) return 0;
     
-    int i = 5, w = 2;
+    int i = 5;
     while (i * i <= n) {
-        if (n % i == 0) return 0;
-        i += w;
-        w -= 6;
+        if (n % i == 0 || n % (i+2) == 0) return 0;
+        i += 6;
     }
 }
 
