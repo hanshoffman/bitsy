@@ -1,6 +1,6 @@
-#!/bin/zsh
+#!/bin/bash
 
 make clean
 make
 clear
-time ./bitsy
+time ./bitsy_speedup

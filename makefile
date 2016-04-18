@@ -9,7 +9,7 @@ $(BASIC): $(BASIC).c
 	$(CC) $(CFLAGS) -o $(BASIC) $(BASIC).c
 
 $(SPEEDUP): $(SPEEDUP).c
-	$(CC) $(CFLAGS) -o $(SPEEDUP) $(SPEEDUP).c
+	$(CC) $(CFLAGS) -fopenmp -o $(SPEEDUP) $(SPEEDUP).c
 
 clean: 
 	rm -rf $(BASIC) $(SPEEDUP) *.o *.dSYM/
