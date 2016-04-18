@@ -3,7 +3,8 @@
 #include <math.h>
 //#include <omp.h>
 
-#define MAX_NUM 1000000
+//#define MAX_NUM 1000000
+#define MAX_NUM 100
 
 int isPerfectSquare(double n) {
     int s = (int)sqrt(n);
@@ -14,8 +15,15 @@ int isPerfectSquare(double n) {
 //https://www.quora.com/What-is-the-most-efficient-algorithm-to-check-if-a-number-is-a-Fibonacci-Number
 int isFibonacci(int n) { return isPerfectSquare(5*n*n + 4) || isPerfectSquare(5*n*n - 4); }
 
+//http://stackoverflow.com/questions/199184/how-do-i-check-if-a-number-is-a-palindrome
 int isPalindrome(int n) {
-    return 1;
+    int rev = 0, digit = 0;
+    while (n > 0) {
+        digit = num % 10;
+        rev = rev * 10 + digit;
+        num = num / 10;
+    }
+    return if (n == rev ? 1 : 0);
 }
 
 //https://en.wikipedia.org/wiki/Primality_test
@@ -31,9 +39,6 @@ int isPrime(int n) {
     }
 }
 
-int multOf3(int n) { if n % 3 == 0 ? 1 : 0; }
-int multOf5(int n) { if n % 5 == 0 ? 1 : 0; }
-
 int main(int argc, const char* argv[]) { 
     //http://bisqwit.iki.fi/story/howto/openmp/
     //#pragma omp parallel for private(i) schedule(dynamic)
@@ -41,7 +46,7 @@ int main(int argc, const char* argv[]) {
         if (isFibonacci(i)) printf("Fibbits ");
         if (isPalindrome(i)) printf("BitstiB ");
         if (isPrime(i)) printf("BitsForEveryone! ");
-        if (multOf3(i)) { printf("CrowdOfBits "); j+=i; }
-        if (multOf5(i)) { printf("MuchBits "); j+=i; }
+        if (if i % 3 == 0 ? 1 : 0) { printf("CrowdOfBits "); j+=i; }
+        if (if n % 5 == 0 ? 1 : 0) { printf("MuchBits "); j+=i; }
     } printf("\n%d", j);
 }
