@@ -15,7 +15,7 @@ int isPerfectSquare(double n) {
 int isFibonacci(int n) { return isPerfectSquare(5*n*n + 4) || isPerfectSquare(5*n*n - 4); }
 
 int isPalindrome(int n) {
-    return true;
+    return 1;
 }
 
 //http://stackoverflow.com/questions/1801391/what-is-the-best-algorithm-for-checking-if-a-number-is-prime
