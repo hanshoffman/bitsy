@@ -3,7 +3,7 @@
 #include <math.h>
 #include <omp.h>
 
-#define MAX_NUM 1000
+#define MAX_NUM 1000000
 
 //http://www.geeksforgeeks.org/check-number-fibonacci-number/
 //https://www.quora.com/What-is-the-most-efficient-algorithm-to-check-if-a-number-is-a-Fibonacci-Number
@@ -43,14 +43,17 @@ int main(int argc, const char* argv[]) {
     omp_set_num_threads(omp_get_num_procs());  
     
     int i, j = 0;
-    #pragma omp parallel for schedule(static)
-    for (i = 1; i <= MAX_NUM; i++) {
-	printf("\n%d -> ", i);
-	if (isFibonacci(i)) printf("Fibbits ");
-        if (isPalindrome(i)) printf("BitstiB ");
-        if (isPrime(i)) printf("BitsForEveryone! ");
-        if (i % 3 == 0 ? 1 : 0) { printf("CrowdOfBits "); j+=i; }
-        if (i % 5 == 0 ? 1 : 0) { printf("MuchBits "); j+=i; }
+    #pragma omp parallel
+    {
+        #pragma omp single
+	for (i = 1; i <= MAX_NUM; i++) {
+	    //printf("\n%d -> ", i);
+            if (isFibonacci(i)) printf("Fibbits ");
+	    if (isPalindrome(i)) printf("BitstiB ");
+	    if (isPrime(i)) printf("BitsForEveryone! ");
+    	    if (i % 3 == 0 ? 1 : 0) { printf("CrowdOfBits "); j+=i; }
+	    if (i % 5 == 0 ? 1 : 0) { printf("MuchBits "); j+=i; }
+        }
     } 
     printf("\n%d\n", j);
     printf("Num CPUs: %d\n", omp_get_num_procs());
