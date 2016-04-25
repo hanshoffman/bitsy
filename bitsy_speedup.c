@@ -3,8 +3,7 @@
 #include <math.h>
 #include <omp.h>
 
-//#define MAX_NUM 1000000
-#define MAX_NUM 100
+#define MAX_NUM 1000000
 
 //http://www.geeksforgeeks.org/check-number-fibonacci-number/
 //https://www.quora.com/What-is-the-most-efficient-algorithm-to-check-if-a-number-is-a-Fibonacci-Number
@@ -30,25 +29,32 @@ int isPrime(int n) {
     if (n <= 1) return 0;
     if (n <= 3) return 1;
     if (n % 2 == 0 || n % 3 == 0) return 0;
-    
+   
     for (int i = 5; i*i <= n; i+=6) {
 	if (n % i == 0 || n % (i+2) == 0) return 0;
     }
     return 1;
 }
 
-int main(int argc, const char* argv[]) { 
-    //http://bisqwit.iki.fi/story/howto/openmp/
-    #pragma omp parallel for
-    //#pragma omp parallel for private(i) schedule(dynamic)
-    int j = 0;
-    for (int i = 1; i <= MAX_NUM; i++) {
-        printf("\n%d -> ", i);
-	if (isFibonacci(i)) printf("Fibbits ");
-        if (isPalindrome(i)) printf("BitstiB ");
-        if (isPrime(i)) printf("BitsForEveryone! ");
-        if (i % 3 == 0 ? 1 : 0) { printf("CrowdOfBits "); j+=i; }
-        if (i % 5 == 0 ? 1 : 0) { printf("MuchBits "); j+=i; }
+int main(int argc, const char* argv[]) {
+    // Disable os dynamic adjustment of the number of threads
+    omp_set_dynamic(0); 
+    // Request as many threads as processors (overrides "OMP_NUM_THREADS" env var
+    omp_set_num_threads(omp_get_num_procs());  
+    
+    int i, j = 0;
+    #pragma omp parallel
+    {
+        #pragma omp single
+	for (i = 1; i <= MAX_NUM; i++) {
+	    //printf("\n%d -> ", i);
+            if (isFibonacci(i)) printf("Fibbits ");
+	    if (isPalindrome(i)) printf("BitstiB ");
+	    if (isPrime(i)) printf("BitsForEveryone! ");
+    	    if (i % 3 == 0 ? 1 : 0) { printf("CrowdOfBits "); j+=i; }
+	    if (i % 5 == 0 ? 1 : 0) { printf("MuchBits "); j+=i; }
+        }
     } 
     printf("\n%d\n", j);
+    printf("Num CPUs: %d\n", omp_get_num_procs());
 }
