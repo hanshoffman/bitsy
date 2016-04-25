@@ -38,7 +38,7 @@ int isPrime(int n) {
 int main(int argc, const char* argv[]) { 
     int j = 0, mod3 = 0, mod5 = 0;
     for (int i = 1; i <= MAX_NUM; i++) {
-        printf("\n%d -> ", i);
+        //printf("\n%d -> ", i);
 	if (isFibonacci(i)) printf("Fibbits ");
         if (isPalindrome(i)) printf("BitstiB ");
         if (isPrime(i)) printf("BitsForEveryone! ");
