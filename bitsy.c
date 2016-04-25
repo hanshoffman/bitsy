@@ -36,14 +36,15 @@ int isPrime(int n) {
 }
 
 int main(int argc, const char* argv[]) { 
-    int j = 0;
+    int j = 0, mod3 = 0, mod5 = 0;
     for (int i = 1; i <= MAX_NUM; i++) {
         printf("\n%d -> ", i);
 	if (isFibonacci(i)) printf("Fibbits ");
         if (isPalindrome(i)) printf("BitstiB ");
         if (isPrime(i)) printf("BitsForEveryone! ");
-        if (i % 3 == 0 ? 1 : 0) { printf("CrowdOfBits "); j+=i; }
-        if (i % 5 == 0 ? 1 : 0) { printf("MuchBits "); j+=i; }
+        if (i % 3 == 0 ? 1 : 0) { printf("CrowdOfBits "); mod3 = 1; }
+        if (i % 5 == 0 ? 1 : 0) { printf("MuchBits "); mod5 = 1; }
+	if (mod3 && mod5) { j += i; }
     } 
     printf("\n%d\n", j);
 }
