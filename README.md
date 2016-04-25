@@ -10,6 +10,7 @@ If a certain number meets multiple criteria, output each that it meets in the or
 At the very end, output the sum of all the integers that are divisible by both 3 and 5 (e.g. 15 or 45, neither 20 nor 9).
 
 # compile
+make clean
 make
 
 # run
