@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <math.h>
 
-#define MAX_NUM 1000000
 const int FIBS[30] = {1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, 514229, 832040};
 
 //http://stackoverflow.com/questions/199184/how-do-i-check-if-a-number-is-a-palindrome
 int isPalindrome(int n) {
     int rev = 0, digit = 0, _n = n;
-    //while (_n > 0 && n > 10) {
     while (_n > 0) {
         digit = _n % 10;
         rev = rev * 10 + digit;
@@ -31,9 +29,9 @@ int main(int argc, const char* argv[]) {
     long j = 0, mod3, mod5;
     int k = 0, nextFib = FIBS[k];
     
-    for (int i = 1; i <= MAX_NUM; i++) {
+    for (int i = 1; i <= 1000000; i++) {
         printf("\n%d -> ", i);
-	if (i == nextFib) { printf("Fibbits "); k++; nextFib = FIBS[k]; }
+	if (k < 30 && i == nextFib) { printf("Fibbits "); k++; nextFib = FIBS[k]; }
         if (isPalindrome(i)) printf("BitstiB ");
         if (isPrime(i)) printf("BitsForEveryone! ");
         if (i % 3 == 0 ? 1 : 0) { printf("CrowdOfBits "); }
