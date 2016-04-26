@@ -30,7 +30,6 @@ int main(int argc, const char* argv[]) {
     int k = 0, nextFib = FIBS[k];
     
     for (int i = 1; i <= 1000000; i++) {
-        printf("\n%d -> ", i);
 	if (k < 30 && i == nextFib) { printf("Fibbits "); k++; nextFib = FIBS[k]; }
         if (isPalindrome(i)) printf("BitstiB ");
         if (isPrime(i)) printf("BitsForEveryone! ");
