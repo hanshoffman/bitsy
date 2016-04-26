@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 make clean
+rm -rf out.txt
 make
 clear
-time ./bitsy
+time ./bitsy > out.txt

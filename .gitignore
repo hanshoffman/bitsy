@@ -36,3 +36,6 @@ bitsy*
 
 # Swap
 .swp
+
+# Text files
+*.txt
