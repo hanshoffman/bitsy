@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -std=c99 -Ofast
 BASIC = bitsy
 
-all: $(BASIC) $(SPEEDUP)
+all: $(BASIC)
 
 $(BASIC): $(BASIC).c
 	$(CC) $(CFLAGS) -o $(BASIC) $(BASIC).c
