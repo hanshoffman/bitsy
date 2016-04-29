@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 make clean
 rm -rf out.txt
