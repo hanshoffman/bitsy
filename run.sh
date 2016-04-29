@@ -3,5 +3,7 @@
 make clean
 rm -rf out.txt
 make
-clear
-time ./bitsy > out.txt
+if [ `echo $?` = 0 ]; then
+    clear
+    time ./bitsy > out.txt
+fi
